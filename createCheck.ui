@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>createCheckClass</class>
+ <widget class="QMainWindow" name="createCheckClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>647</width>
+    <height>354</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Создание проверки</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Список врачей</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QListWidget" name="doctorList"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="addDoctor">
+        <property name="text">
+         <string>Добавить в список проверяющих</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Список полицейских</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QListWidget" name="policeList"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="addPolice">
+        <property name="text">
+         <string>Добавить в список проверяющих</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="2">
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Список специалистов от думы</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QListWidget" name="doomList"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="addDoom">
+        <property name="text">
+         <string>Добавить в спиок проверяющих</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0" colspan="3">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Список проверяющих</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QListWidget" name="endSpecList"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="deleteSpecialist">
+          <property name="text">
+           <string>Убрать из списка проверяющих</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="0" colspan="3">
+     <widget class="QPushButton" name="confirmCheckCreate">
+      <property name="text">
+       <string>Подтвердить создание проверки</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>647</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
