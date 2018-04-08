@@ -1,62 +1,67 @@
 #include "requester.h"
 
-requester::requester() : QObject()
+Requester::Requester() : QObject()
 {
 }
 
-requester::requester(QString msg) : QObject()
+Requester::Requester(QString msg) : QObject()
 {
 	message = msg;
 }
 
-requester::~requester()
+Requester::~Requester()
 {
 
 }
 
-QString requester::getUrl(QString root, QString apiTitle)
+QString Requester::getUrlPost(QString root, QString apiTitle)
 {
-	QString url = QString("http://") + root + QString("/api/") + apiTitle; //+ QString("/");
-    /*for (auto iter = data.begin(); iter != data.end(); ++iter)
+	return QString("http://") + root + QString("/api/") + apiTitle;
+}
+
+QString Requester::getUrlGet(QString root, QString apiTitle, QVariantMap params)
+{
+	QString url = QString("http://") + root + QString("api?method=") + apiTitle;
+    for (auto iter = params.begin(); iter != params.end(); ++iter)
     {
-        url += iter.key() + QString("=") + iter.value().toString() + QString("&");
+        url += QString("&") + iter.key() + QString("=") + iter.value().toString();
     }
-    return url.remove(url.size() - 1, 1);*/
-	return url;
+    return url;//url.remove(url.size() - 1, 1);
 }
 
-QVariantMap requester::getJsonData(const QJsonObject &json)
+QVariantMap Requester::getJsonData(const QByteArray &data)
 {
-	return json.toVariantMap();
+	QJsonDocument jsonDocument = QJsonDocument::fromBinaryData(data);
+	return jsonDocument.object().toVariantMap();
 }
 
-QJsonObject requester::setJsonData(const QVariantMap &data)
+QByteArray Requester::setJsonData(const QVariantMap &data)
 {
-	return QJsonObject::fromVariantMap(data);
+	QJsonObject jsonObject = QJsonObject::fromVariantMap(data);
+	return QJsonDocument(jsonObject).toBinaryData();
 }
 
-void requester::sendMessage()
+void Requester::sendMessage()
 {
 	QVariantMap data;
 	//data.insert("userId", QVariant(id));
 	//data.insert("toWhom", QVariant(id));
 	data.insert("sendMessage", QVariant(message));
-	QString url = getUrl(LOCALHOST, "sendMessage");
-	QJsonObject json = setJsonData(data);
-	QJsonDocument jsonDoc = QJsonDocument(json);
+	QString url = getUrlPost(LOCALHOST, "sendMessage");
+	
+	//QJsonDocument jsonDoc = QJsonDocument(json);
 }
 
-void requester::getMessageData()
+void Requester::getMessageData()
 {
 
 }
 
-void requester::getResponseMessageData(QNetworkReply* reply)
+void Requester::getResponseMessageData(QNetworkReply* reply)
 {
 	if (reply->error() == QNetworkReply::NoError)
 	{
-		QJsonDocument json = QJsonDocument::fromBinaryData(reply->readAll());
-		QVariantMap data = getJsonData(json.object());
+		QVariantMap data = getJsonData(reply->readAll());
 		int sum = data.value("sum").toInt();
 	}
 }

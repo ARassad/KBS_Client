@@ -11,18 +11,19 @@
 
 #define LOCALHOST QString("127.0.0.1:8000")
 
-class requester : public QObject
+class Requester : public QObject
 {
 	Q_OBJECT
 
 public:
-	requester();
-	requester(QString msg);
-	~requester();
+	Requester();
+	Requester(QString msg);
+	~Requester();
 
-	QString getUrl(QString root, QString apiTitle);
-	QVariantMap getJsonData(const QJsonObject &json);
-	QJsonObject setJsonData(const QVariantMap &data);
+	QString getUrlPost(QString root, QString apiTitle);
+	QString getUrlGet(QString root, QString apiTitle, QVariantMap params);
+	QVariantMap getJsonData(const QByteArray &data);
+	QByteArray setJsonData(const QVariantMap &data);
 
 	void getMessageData();
 
